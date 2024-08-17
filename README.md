@@ -1,6 +1,3 @@
-
----
-
 # Robinhood Stock Analyzer
 
 A comprehensive tool for analyzing stock transactions and portfolio performance, specifically designed for integration with Robinhood. This project provides functionalities to filter and analyze stock trades, calculate outstanding stock quantities, and visualize historical stock prices. It integrates with Yahoo Finance to fetch current stock prices and plots various metrics to evaluate stock trading strategies and portfolio performance.
@@ -85,6 +82,3 @@ Feel free to submit issues or pull requests. Contributions are welcome!
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
----
-
-Feel free to customize this `README.md` further if there are any additional details or features specific to your project.
