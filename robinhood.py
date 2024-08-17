@@ -290,9 +290,20 @@ class StockAnalyzer:
         """
         Plots the historical price and transactions, highlighting key points.
         """
+        # Filter to get the first buy date
+        first_buy_date = self.df[(self.df["symbol"] == stock_symbol.upper()) & (self.df["side"] == "buy")]["date"].min()
+
+        if pd.isna(first_buy_date):
+            print(f"No buy transactions found for {stock_symbol}. Cannot plot historical data.")
+            return
+
+        # Calculate the period from the first buy date until today
+        today = pd.Timestamp.now(tz="UTC")
+        period = f"{(today - first_buy_date).days}d"
+
         # Fetch historical stock data from Yahoo Finance
         stock = yf.Ticker(stock_symbol)
-        historical_data = stock.history(period="1y")
+        historical_data = stock.history(start=first_buy_date, end=today)
         historical_data.reset_index(inplace=True)
         historical_data["Date"] = pd.to_datetime(historical_data["Date"])
 
