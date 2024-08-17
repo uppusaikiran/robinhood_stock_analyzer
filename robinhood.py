@@ -8,6 +8,7 @@ import argparse
 from tabulate import tabulate
 from collections import deque
 import os
+import robin_stocks.robinhood as r
 
 import pyotp
 from dotenv import load_dotenv
