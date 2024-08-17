@@ -68,6 +68,9 @@ A comprehensive tool for analyzing stock transactions and portfolio performance,
    - Calculates and prints outstanding stock quantities and detailed sales information.
    - Plots historical stock prices and key transaction points.
 
+![Alt text](sample.png)
+
+
 ## Example
 
 ```bash
