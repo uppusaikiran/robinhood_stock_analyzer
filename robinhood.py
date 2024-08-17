@@ -296,7 +296,7 @@ class StockAnalyzer:
         if pd.isna(first_buy_date):
             print(f"No buy transactions found for {stock_symbol}. Cannot plot historical data.")
             return
-
+        first_buy_date = first_buy_date - pd.Timedelta(days=30)
         # Calculate the period from the first buy date until today
         today = pd.Timestamp.now(tz="UTC")
         period = f"{(today - first_buy_date).days}d"
