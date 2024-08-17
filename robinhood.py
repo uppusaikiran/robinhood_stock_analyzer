@@ -7,7 +7,6 @@ import pandas as pd
 import argparse
 from tabulate import tabulate
 from collections import deque
-from two_factor_log_in import *
 import os
 
 import pyotp
