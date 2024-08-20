@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analysis Report for {{ stock_symbol }}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .tab-content {
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Stock Analysis Report for {{ stock_symbol }}</h1>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" id="reportTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="true">Transactions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="outstanding-stocks-tab" data-toggle="tab" href="#outstanding-stocks" role="tab" aria-controls="outstanding-stocks" aria-selected="false">Outstanding Stocks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="sale-transactions-tab" data-toggle="tab" href="#sale-transactions" role="tab" aria-controls="sale-transactions" aria-selected="false">Sale Transactions</a>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content mt-3" id="reportTabsContent">
+            <div class="tab-pane fade show active" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
+                <h2>Transactions</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Symbol</th>
+                            <th>Side</th>
+                            <th>Quantity</th>
+                            <th>Average Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.date }}</td>
+                            <td>{{ transaction.symbol }}</td>
+                            <td>{{ transaction.side }}</td>
+                            <td>{{ transaction.quantity }}</td>
+                            <td>{{ transaction.average_price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="outstanding-stocks" role="tabpanel" aria-labelledby="outstanding-stocks-tab">
+                <h2>Outstanding Stocks</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Buy Date</th>
+                            <th>Outstanding Quantity</th>
+                            <th>Buy Price</th>
+                            <th>Today's Price</th>
+                            <th>Current Value</th>
+                            <th>Profit/Loss (if sold today)</th>
+                            <th>Term</th>
+                            <th>Tax</th>
+                            <th>Net Profit/Loss</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stock in outstanding_stocks %}
+                        <tr>
+                            <td>{{ stock[0] }}</td>
+                            <td>{{ stock[1] }}</td>
+                            <td>{{ stock[2] }}</td>
+                            <td>{{ stock[3] }}</td>
+                            <td>{{ stock[4] }}</td>
+                            <td>{{ stock[5] }}</td>
+                            <td>{{ stock[6] }}</td>
+                            <td>{{ stock[7] }}</td>
+                            <td>{{ stock[8] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="sale-transactions" role="tabpanel" aria-labelledby="sale-transactions-tab">
+                <h2>Sale Transactions</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sale Date</th>
+                            <th>Transaction Type</th>
+                            <th>Sale Quantity</th>
+                            <th>Buy Date</th>
+                            <th>Buy Quantity</th>
+                            <th>Buy Price</th>
+                            <th>Sell Price</th>
+                            <th>Match Type</th>
+                            <th>Profit/Loss</th>
+                            <th>Term</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sale in sale_transactions %}
+                        <tr>
+                            <td>{{ sale[0] }}</td>
+                            <td>{{ sale[1] }}</td>
+                            <td>{{ sale[2] }}</td>
+                            <td>{{ sale[3] }}</td>
+                            <td>{{ sale[4] }}</td>
+                            <td>{{ sale[5] }}</td>
+                            <td>{{ sale[6] }}</td>
+                            <td>{{ sale[7] }}</td>
+                            <td>{{ sale[8] }}</td>
+                            <td>{{ sale[9] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
